@@ -1,0 +1,46 @@
+{
+  "name": "habanero-blog",
+  "version": "0.0.1",
+  "description": "A Metalsmith blog",
+  "main": "build.js",
+  "dependencies": {
+    "metalsmith": "^2.3.0",
+    "clean-css": "^3.4.18",
+    "handlebars": "^4.0.5",
+    "metalsmith-collections": "^0.7.0",
+    "metalsmith-drafts": "0.0.1",
+    "metalsmith-html-minifier": "^2.0.0",
+    "metalsmith-layouts": "^1.6.4",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-navigation": "^0.2.9",
+    "metalsmith-permalinks": "^0.5.0",
+    "node-sass": "4.5.0",
+    "nodemon": "^1.11.0",
+    "uglify-js": "^2.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm install",
+    "start": "node .",
+    "pretest": "npm run lint && npm run bundle && npm run build:css && npm run minify -s",
+    "dev": "npm run logo -s; npm run build -s && npm run watch -s & npm run start:dev",
+    "build": "npm run build:css && npm run minify -s && node build.js",
+    "build:css": "./bin/build-css.sh",
+    "bundle": "./bin/compress-assets.sh",
+    "watch": "./bin/watch-build.sh",
+    "minify": "npm run minify:css && npm run minify:js",
+    "minify:css": "./bin/minify-css.sh",
+    "minify:js": "./bin/minify-js.sh",
+    "lint": "./node_modules/eslint/bin/eslint.js *.js ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreasvirkus/habanero-blog.git"
+  },
+  "author": "andreasvirkus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreasvirkus/habanero-blog/issues"
+  },
+  "homepage": "https://github.com/andreasvirkus/habanero-blog#readme"
+}
